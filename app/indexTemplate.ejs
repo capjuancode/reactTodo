@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title><%= process.env.TEMPLATE_CONFIG.Title %></title>
+  <% for(var i=0; i < process.env.TEMPLATE_CONFIG.CssDeps.length; i++) { %>
+    <link rel="stylesheet" href="<%= process.env.TEMPLATE_CONFIG.CssDeps[i] %>" />
+  <% } %>
+  <% for(var i=0; i < process.env.TEMPLATE_CONFIG.ScriptDeps.length; i++) { %>
+    <script src="<%= process.env.TEMPLATE_CONFIG.ScriptDeps[i] %>"></script>
+  <% } %>
+</head>
+<body>
+  <div id="app"></div>
+
+</body>
+</html>

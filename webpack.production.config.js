@@ -3,23 +3,23 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var AssetsPlugin = require('assets-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var StatsPlugin = require('stats-webpack-plugin');
 var config = require('./config');
-
+console.log(path.resolve(__dirname, 'app', 'index.js'));
 module.exports = {
-  devtool: 'inline-source-map',
   entry: {
-    app: path.join(__dirname, 'app/index.js')
+    app: path.resolve(__dirname, 'app/index.js')
   },
   output: {
-    path: path.join(__dirname, '/dist/'),
-    filename: '[name].js?[hash]',
+    path: path.resolve(__dirname, 'dist'),
+    filename: '[name]-[hash].min.js',
     publicPath: '/'
   },
   resolve: {
     root: path.resolve(__dirname),
     alias: {
-      // util: path.resolve(__dirname, './app/common/util'),
+      // util: path.resolve(__dirname, './app/common/util')
     },
     extensions: ['', '.js', '.jsx']
   },
@@ -30,16 +30,26 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'app/indexTemplate.ejs'),
+      template: path.join(__dirname, 'app', 'indexTemplate.ejs'),
       inject: 'body',
       filename: 'index.html'
     }),
+    new ExtractTextPlugin('[name]-[hash].min.css'),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+        screw_ie8: true
+      }
+    }),
+    new StatsPlugin('webpack.stats.json', {
+      source: true,
+      modules: true
+    }),
     new webpack.DefinePlugin({
       'process.env': {
-        'NODE_ENV': JSON.stringify('development'),
+        'NODE_ENV': JSON.stringify('production'),
         'APP_CONFIG': JSON.stringify(config.get('app')),
         'TEMPLATE_CONFIG': JSON.stringify(config.get('template'))
       }

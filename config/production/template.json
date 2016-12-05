@@ -1,0 +1,21 @@
+{
+  "template": {
+    "Title": "",
+    "ScriptDeps": [
+      "https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js",
+      "https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"
+    ],
+    "CssDeps": [
+      "https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700",
+      "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/fonts/roboto/Roboto-Regular.ttf",
+      "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/fonts/roboto/Roboto-Regular.woff",
+      "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/fonts/roboto/Roboto-Regular.woff2",
+      "https://fonts.googleapis.com/icon?family=Material+Icons",
+      "http://fonts.googleapis.com/css?family=Open+Sans",
+      "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css",
+      "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.css"
+    ]
+  }
+}

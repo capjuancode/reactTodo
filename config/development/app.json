@@ -1,0 +1,6 @@
+{
+  "app": {
+    "Host": "//localhost:8080/",
+    "Env": "dev"
+  }
+}
