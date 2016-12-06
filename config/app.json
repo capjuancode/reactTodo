@@ -3,11 +3,11 @@
     "Loggly": {
       "logglyKey": "",
       "sendConsoleErrors": true,
-      "tag": "Pintegra-ui"
+      "tag": ""
     },
     "Auth0": {
      "ClientId": "",
-     "Domain": "touchsuite.auth0.com"
+     "Domain": ""
    }
   }
 }
