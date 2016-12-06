@@ -1,8 +1,7 @@
 import dispatcher from './dispatcher';
 
-export function create(step) {
+export function getAll() {
   dispatcher.dispatch({
-    type: 'CREATE_STEP',
-    step,
+    type: 'GET_ALL'
   });
 }

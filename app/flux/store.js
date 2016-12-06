@@ -6,15 +6,16 @@ import dispatcher from './dispatcher'
 
 class Store extends EventEmiter {
   // //starts with a seed in this case a list of steps
-  // constructor() {
-  //   super()
+  constructor() {
+    super()
+    this.store = 'hello world'
   //   this.steps=[
   //     { "Id": 1, "Name": "Step 1", "Description": "Installation of pc sofware", "Status": 0, "Icon": "gear", "AccountId": "", "isOpen": false },
   //     { "Id": 2, "Name": "Step 2", "Description": "Sync your quickbooks Data", "Status": 0, "Icon": "refresh", "AccountId": "", "isOpen": false },
   //     { "Id": 3, "Name": "Step 3", "Description": "Who do you want to email summary to", "Status": 0, "Icon": "email", "AccountId": "", "isOpen": false },
   //     { "Id": 4, "Name": "Step 4", "Description": "Have great day (confirmation sent / received)", "Status": 0, "Icon": "thumbsup", "AccountId": "", "isOpen": false }
   //   ];
-  // }
+  }
   //
   // // when function is call it will create a new step
   // createSteps(step) {
@@ -31,25 +32,25 @@ class Store extends EventEmiter {
   //   this.emit('change');
   // }
   // // function to all in store Steps
-  // getAll() {
-  //   return this.steps;
-  // }
+  getAll() {
+    return this.store;
+  }
   //
   // // handle all action that come from dispatcher
-  // handleActions(action) {
-  //   // it is check by a switch and will have a type that id it
-  //   switch(action.type) {
-  //     // call a function
-  //     case 'CREATE_STEP': {
-  //       this.createSteps(action.step);
-  //     }
-  //   }
-  // };
+  handleActions(action) {
+    // it is check by a switch and will have a type that id it
+    switch(action.type) {
+      // call a function
+      case 'GET_ALL': {
+        this.getAll();
+      }
+    }
+  };
 }
 
-const stepStore = new StepStore;
+const store = new Store;
 // creating a new dispatcher listener and you do that with dispatcher.register
-// dispatcher.register(stepStore.handleActions.bind(stepStore));
+dispatcher.register(store.handleActions.bind(store));
 
 
-export default stepStore;
+export default store;
